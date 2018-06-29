@@ -1,19 +1,25 @@
 /*jshint esversion: 6 */
-
 "use strict";
 
     
-// Quote constructor
-function Quote(quote, source, tags, citation = null, year = null ) {
-    /* jshint validthis: true */
-    this.quote = quote;
-    this.source = source;
-    this.tags = tags;
-    this.citation = citation;
-    this.year = year;   
+/** 
+ * Quote object constructor
+ */
+class Quote {
+    constructor(quote, source, tags, citation = null, year = null) {
+        /* jshint validthis: true */
+        this.quote = quote;
+        this.source = source;
+        this.tags = tags;
+        this.citation = citation;
+        this.year = year;
+    }
 }
 
-// Create a random integer between 0 and the upper range passed to function
+/**
+ * Create a random integer between 0 and the upper range passed to function 
+ * @param {number} upperRange the highest expected number to be returned
+ */
 const getRandomInt = (upperRange) => {
     return Math.floor(Math.random() * upperRange);    
 };
@@ -27,6 +33,9 @@ const getRandomQuote = () => {
     return quote;    
 };
 
+/**
+ * display a quote and citation on the screen
+ */
 const printQuote = () => {
     // store the random quote in variable
     const currentQuote = getRandomQuote();
@@ -51,13 +60,15 @@ const printQuote = () => {
     let backColor = `rgb(${getRandomInt(190)}, ${getRandomInt(190)}, ${getRandomInt(190)})`
     // change the background color
     document.querySelector("body").style.backgroundColor = backColor;
-
-
 }
 
-// concactenate span html
+/**
+ * concactenate span html
+ * @param {string} text the text displayed by the span
+ * @param {string} className the name of the class to associate with the span.
+ */
 const createSpan = (text, className) => {
-    return '<span class="' + className + '">' + text + '<span>';
+    return `<span class="${className}">${text}<span>`;
 };
 
 // event listener to respond to "Show another quote" button clicks
